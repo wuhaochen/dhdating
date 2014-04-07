@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>DH Dating test</title>
+    <script src="www-cs-students.stanford.edu/~tjw/jsbn/jsbn.js"></script>
+    <script src="www-cs-students.stanford.edu/~tjw/jsbn/jsbn2.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function generatep() {
+        var g = Math.random()
+        document.getElementById('p').value = "123";
+        document.getElementByID('g').value = "123";
+      }
+    </script>
+    <output type="text" id="g"/>
+    <br>
+    <output type="text" id="p"/>
+    <br>
+    <button type="button" onclick="generatep();">Generate g and p</button>
+  </body>
+</html>
