@@ -21,8 +21,8 @@
        //Look for prime distribution for reference.
          var r;
          do{
-           r = random_integer(min,max);
-           r = new BigInteger(r.toString(),10);
+             r = new BigInteger();
+             r.fromInt(random_integer(min,max));
          }
          while (!r.isProbablePrime(t));
          return r;
@@ -35,10 +35,10 @@
        function generatetrue() {
          var sk = random_integer(10,1000);
          document.dhdating2.sk.value = sk;
-         var g = document.dhdating.g.value;
-         g = new BigInteger(g.toString(),10)
-         var p = document.dhdating.p.value;
-         p = new BigInteger(p.toString(),10)
+         var g = new BigInteger();
+         g.fromInt(document.dhdating.g.value);
+         var p = new BigInteger();
+         p.fromInt(document.dhdating.p.value);
          document.dhdating2.pk.value = g.modPowInt(sk,p);
        }
 
@@ -51,15 +51,16 @@
 
        function computeresult() {
          var sk = document.dhdating2.sk.value;
-         var pk = document.dhdating2.pk.value;
-         pk = new BigInteger(pk.toString(),10);
-         var p = document.dhdating.p.value;
-         p = new BigInteger(p.toString(),10);
+         var pk = new BigInteger();
+         pk.fromInt(document.dhdating2.pk.value);
+         var p = new BigInteger();
+         p.fromInt(document.dhdating.p.value);
          document.dhdating2.result.value = pk.modPowInt(sk,p);
        }
       -->
   </script>
   <body>
+    <h2>Basic Setting</h2>
     <form name="dhdating" onSubmit='generatepg();return false;'>
       g:<br>
       <textarea name="g" rows=1 cols=10></textarea><p>
@@ -67,6 +68,7 @@
       <textarea name="p" rows=1 cols=10></textarea><p>
       <input type="button" value="generate g p" onClick="generatepg();">
     </form>
+    <h2>Generate Ticket</h2>
     <form name="dhdating2" onSubmit=''>
       private key:<br>
       <textarea name="sk" rows=1 cols=10></textarea><p>
