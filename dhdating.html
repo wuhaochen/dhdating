@@ -1,21 +1,45 @@
 <html>
   <head>
     <title>DH Dating test</title>
-    <script src="www-cs-students.stanford.edu/~tjw/jsbn/jsbn.js"></script>
-    <script src="www-cs-students.stanford.edu/~tjw/jsbn/jsbn2.js"></script>
+    <script src="http://www-cs-students.stanford.edu/~tjw/jsbn/jsbn.js"></script>
+    <script src="http://www-cs-students.stanford.edu/~tjw/jsbn/jsbn2.js"></script>
   </head>
+  <script type="text/javascript">
+    <!--
+       function generatepg() {
+         var min = 1000;
+         var max = 10000;
+         var t = 10;
+         var r = random_prime(min,max,t);
+         var g = random_integer(min,r);
+         document.dhdating.p.value = r;
+         document.dhdating.g.value = g;
+       }
+
+       function random_prime(min,max,t) {
+       //Warning:This function could potentially lead to infinite loop if the range is not properly set.
+       //Look for prime distribution for reference.
+         var r;
+         do{
+           r = random_integer(min,max);
+           r = new BigInteger(r.toString(),10);
+         }
+         while (!r.isProbablePrime(t));
+         return r;
+       }
+
+       function random_integer(min,max) {
+         return Math.floor(min + (max - min)*Math.random());
+       } 
+      -->
+  </script>
   <body>
-    <script type="text/javascript">
-      function generatep() {
-        var g = Math.random()
-        document.getElementById('p').value = "123";
-        document.getElementByID('g').value = "123";
-      }
-    </script>
-    <output type="text" id="g"/>
-    <br>
-    <output type="text" id="p"/>
-    <br>
-    <button type="button" onclick="generatep();">Generate g and p</button>
+    <form name="dhdating" onSubmit='generatepg();return false;'>
+      g:<br>
+      <textarea name="g" rows=1 cols=10></textarea><p>
+      p:<br>
+      <textarea name="p" rows=1 cols=10></textarea><p>
+      <input type="button" value="generate g p" onClick="generatepg();">
+    </form>
   </body>
 </html>
