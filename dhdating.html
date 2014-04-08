@@ -30,7 +30,33 @@
 
        function random_integer(min,max) {
          return Math.floor(min + (max - min)*Math.random());
-       } 
+       }
+
+       function generatetrue() {
+         var sk = random_integer(10,1000);
+         document.dhdating2.sk.value = sk;
+         var g = document.dhdating.g.value;
+         g = new BigInteger(g.toString(),10)
+         var p = document.dhdating.p.value;
+         p = new BigInteger(p.toString(),10)
+         document.dhdating2.pk.value = g.modPowInt(sk,p);
+       }
+
+       function generatefalse() {
+         var p = document.dhdating.p.value;
+         var r = random_integer(1,p);
+         document.dhdating2.sk.value = "N/A";
+         document.dhdating2.pk.value = r;
+       }
+
+       function computeresult() {
+         var sk = document.dhdating2.sk.value;
+         var pk = document.dhdating2.pk.value;
+         pk = new BigInteger(pk.toString(),10);
+         var p = document.dhdating.p.value;
+         p = new BigInteger(p.toString(),10);
+         document.dhdating2.result.value = pk.modPowInt(sk,p);
+       }
       -->
   </script>
   <body>
@@ -40,6 +66,18 @@
       p:<br>
       <textarea name="p" rows=1 cols=10></textarea><p>
       <input type="button" value="generate g p" onClick="generatepg();">
+    </form>
+    <form name="dhdating2" onSubmit=''>
+      private key:<br>
+      <textarea name="sk" rows=1 cols=10></textarea><p>
+      ticket:<br>
+      <textarea name="pk" rows=1 cols=10></textarea><p>
+      <input type="button" value="generate true" onClick="generatetrue();">
+      <input type="button" value="generate false" onClick="generatefalse();">
+      <br>
+      <input type="button" value="compute result" onClick="computeresult();">
+      <br>
+      <textarea name="result" rows=1 cols=10></textarea>
     </form>
   </body>
 </html>
