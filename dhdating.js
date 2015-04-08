@@ -36,8 +36,9 @@ function generatetrue() {
 
 function generatefalse() {
     var p = document.dhdating.p.value;
+    var sk = random_integer(10,1000) // Only for position taker, not used.
     var r = random_integer(1,p);
-    document.dhdating2.sk.value = "N/A";
+    document.dhdating2.sk.value = sk;
     document.dhdating2.pk.value = r;
 }
 
