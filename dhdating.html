@@ -7,6 +7,7 @@
   </head>
   <body>
     <h2>Basic Setting</h2>
+    <h3>1.Before you start to play, generate g and p for later usage.</h3>
     <form name="dhdating" onSubmit='generatepg();return false;'>
       g:<br>
       <textarea name="g" rows=1 cols=10></textarea><p>
@@ -15,6 +16,9 @@
       <input type="button" value="generate g p" onClick="generatepg();">
     </form>
     <h2>Generate Ticket</h2>
+    <h3>2.Choose your action, remember your private key and give out your ticket.</h3>
+    <h3>3.Receive the ticket from other people, use your private key and the ticket you get to compute the result.</h3>
+    <h3>4.If you get the same result with other people, you know you both generated a True!</h3>
     <form name="dhdating2" onSubmit=''>
       private key:<br>
       <textarea name="sk" rows=1 cols=10></textarea><p>
